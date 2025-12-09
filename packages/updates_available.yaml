@@ -1,4 +1,4 @@
-# Version: 2025.12.2
+# Version: 2025.12.3
 # Updates Available Package
 #
 # Auto update all addons, firmware, core, os.
@@ -601,6 +601,7 @@ automation:
 
               {{ result.updates|count > 0 }}
         then:
+          - delay: "00:02:00"
           - action: update.install
             continue_on_error: true
             target:
