@@ -468,6 +468,7 @@ automation:
               {% for state in states.update 
                 |selectattr('state', '==', 'on')
                 |selectattr('attributes.device_class', '==', 'firmware')
+                |rejectattr('attributes.title', '==', 'ESPHome')
                 |rejectattr('entity_id','in', ignored )
               %}
                 {% if as_timestamp(state.last_changed) | int + 60*60*hours < as_timestamp(now()) | int %}
@@ -493,6 +494,7 @@ automation:
                 {% for state in states.update 
                   |selectattr('state', '==', 'on')
                   |selectattr('attributes.device_class', '==', 'firmware')
+                  |rejectattr('attributes.title', '==', 'ESPHome')
                   |rejectattr('entity_id','in', ignored )
                 %}
                   {% if as_timestamp(state.last_changed) | int + 60*60*hours < as_timestamp(now()) | int %}
