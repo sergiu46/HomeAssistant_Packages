@@ -1,4 +1,4 @@
-# Version: 2025.12.3
+# Version: 2026.1.1
 # Updates Available Package
 #
 # Auto update all addons, firmware, core, os.
@@ -585,7 +585,7 @@ automation:
               {{ result.updates | count > 0 }}
             continue_on_timeout: true
             timeout: "00:30:00"
-
+          - delay: "00:02:00"
       - if:
           - condition: template
             value_template: |-
@@ -603,7 +603,6 @@ automation:
 
               {{ result.updates|count > 0 }}
         then:
-          - delay: "00:02:00"
           - action: update.install
             continue_on_error: true
             target:
